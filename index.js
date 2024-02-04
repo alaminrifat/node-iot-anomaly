@@ -1,22 +1,26 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const keypadApi = require("./server/Keypad"); // Adjust the path as needed
+const express = require('express');
+const bodyParser = require('body-parser');
+const keypadApi = require('./server/Keypad'); // Adjust the path as needed
+const cors = require('cors'); // Add this line
 
 const app = express();
 const port = 3000; // Change this to your desired port
+
+// Middleware for enabling CORS
+app.use(cors());
 
 // Middleware for parsing JSON and URL-encoded form data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Use the user API routes
-app.use("/api/keypad", keypadApi);
+app.use('/api/keypad', keypadApi);
 
-app.get("/", (req, res) => {
-  res.send("ok"); // Respond with a success status code
+app.get('/', (req, res) => {
+    res.send('ok'); // Respond with a success status code
 });
 
 // Start the Express server
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port ${port}`);
 });

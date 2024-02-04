@@ -1,8 +1,0 @@
-{
-  "watch": ["src", "config"],
-  "ext": "js json",
-  "exec": "node src/index.js",
-  "env": {
-    "NODE_ENV": "development"
-  }
-}
